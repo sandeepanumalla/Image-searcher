@@ -1,5 +1,5 @@
 .wrapper{
-    margin-top:4rem;
+    margin-top:2rem;
 
     width:100v;
 
@@ -12,7 +12,7 @@
     margin-right: 5%;
 }
 .search{
-    margin-top:3rem
+    margin-top:1.5rem
 }
 .btn{
     background-color: rgb(37, 37, 37);
@@ -28,10 +28,21 @@
 }
 .ant-btn-primary{
     background-color:rgb(37, 37, 37,.9);
+    background: rgb(37, 37, 37,.9);
+    border-color: none;
     border:none;
+}
+.ant-btn-primary::selection{
+    
+        color: #fff;
+        background: rgb(37, 37, 37,.9)
+    
 }
 .ant-btn-primary:hover{
     background-color:rgb(37, 37, 37,.5);
+}
+.ant-space-vertical{
+    width:30rem
 }
 .box{
     border-radius: 2px; 
@@ -43,6 +54,9 @@
         grid-template-columns:repeat(auto-fit,350px);
         grid-template-rows: repeat(8,12rem);
         
+    }
+    .ant-space-vertical{
+        width: 15rem;
     }
 }
 

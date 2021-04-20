@@ -21,6 +21,13 @@ const Images = () => {
     }
     const fetchTheImages = ()=>{
         setSearchCalled(true)
+        if(search === '' || search === undefined){
+            setRandom(true);
+        }else{
+            setRandom(false);
+        }
+           
+        
         fetch(`https://api.unsplash.com/search/collections?page=${page}&query=${search}`,{
             method: 'GET',
             headers: {
@@ -39,7 +46,7 @@ const Images = () => {
        
    }
 
-   useEffect(()=>{
+   /* useEffect(()=>{
     fetch(`https://api.unsplash.com/photos?page=${page}`,{
             method: 'GET',
             headers: {
@@ -51,7 +58,7 @@ const Images = () => {
         .then(data =>{console.log(data)
             setRandom(data);
         })
-   },[])
+   },[]) */
    useEffect(()=>{
 
        if(page > 1  ){
@@ -72,12 +79,18 @@ const Images = () => {
         
         <Search className="search" onChange={e=>onChangeHandler(e)} name="search" placeholder="Search any images" onSearch={fetchTheImages} enterButton />
         </Space>
+        {   
+            random || search =="" || search== undefined || search == null? 
+            <h2>Random Images</h2>:
+            <h2>{search}</h2>    
+        }
             <div className="wrapper">
             
           
              
                {   results === undefined || results === null || results.total_pages ==0 ?null:
                    results.results.slice(0,8).map((result)=>{
+
                        if(result.cover_photo.urls.small !== null || result.cover_photo.urls.small !== undefined){
                         return  <div key={result.id} style={{background:`url(${result.cover_photo.urls.small})`,backgroundSize:'cover',backgroundRepeat:'no-repeat'}} className="box"></div>
                        }
